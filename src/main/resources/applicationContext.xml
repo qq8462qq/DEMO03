@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--配置目标类-->
+    <bean id="target" class="com.itheima.proxy.test.Target"></bean>
+    <!-- 配置切面类-->
+    <bean id="advice" class="com.itheima.proxy.test.Advice"></bean>
+    <aop:config>
+        <!--引用advice的Bean为切面对象-->
+        <aop:aspect ref="advice">
+            <aop:before method="before" pointcut="execution(* com.itheima.proxy..*.*(..))"></aop:before>
+
+        </aop:aspect>
+    </aop:config>
+    <!--配置目标类-->
+    <bean id="shixian" class="com.itheima.proxy.test02.ShiXianQ"></bean>
+    <!-- 配置切面类-->
+    <bean id="zhengqiangq" class="com.itheima.proxy.test02.ZhengQiangQ"></bean>
+    <!--（织入）：将切点与通知结合的过程-->
+    <aop:config>
+        <aop:aspect ref="zhengqiangq">
+            <aop:before method="mythod" pointcut="execution(* com.itheima.proxy..*.*(..))"></aop:before>
+        </aop:aspect>
+    </aop:config>
+    <!--配置目标类-->
+    <bean id="w" class="com.itheima.proxy.Test03.W"></bean>
+    <!--配置切面类-->
+    <bean id="ww" class="com.itheima.proxy.Test03.WW"></bean>
+    <aop:config>
+        <aop:aspect ref="ww">
+            <aop:pointcut id="QQ" expression="execution(* com.itheima.proxy..*.*(..))"/>
+           <aop:before method="QW" pointcut="execution(* com.itheima.proxy..*.*(..))"></aop:before><!--前置增强-->
+            <aop:after method="QZ" pointcut="execution(* com.itheima.proxy..*.*(..))"></aop:after><!--最终增强-->
+            <aop:after-returning method="QH" pointcut="execution(* com.itheima.proxy..*.*(..))"></aop:after-returning><!--后置增强&ndash-->
+            <aop:after-throwing method="QY" pointcut="execution(* com.itheima.proxy..*.*(..))"></aop:after-throwing> <!--异常抛出增强-->
+            <aop:around method="Q" pointcut-ref="QQ"></aop:around><!--环绕增强-->
+
+
+        </aop:aspect>
+
+    </aop:config>
+
+
+
+
+
+
+</beans>

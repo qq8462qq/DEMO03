@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <!--配置目标类-->
+  <!--  <bean id="mubiaolei" class="com.itheima.proxy.test04.MuBiaoLei"></bean>
+
+    &lt;!&ndash; 配置切面类&ndash;&gt;
+    <bean id="qiemianlei" class="com.itheima.proxy.test04.QieMianLei"></bean>-->
+
+        <!--引用qiemianlei的Bean为切面对象-->
+   <!-- <aop:config>
+        &lt;!&ndash;引用qiemianlei为Beab切面类&ndash;&gt;
+        <aop:aspect ref="qiemianlei">
+            <aop:pointcut id="peizhi" expression="execution(* com.itheima.proxy.test04.*.*(..))"></aop:pointcut>
+            <aop:before method="zhengQiangQ" pointcut-ref="peizhi"></aop:before>&lt;!&ndash;前置&ndash;&gt;
+            <aop:after-throwing method="zhengQiangY" pointcut-ref="peizhi"></aop:after-throwing>&lt;!&ndash;异常&ndash;&gt;
+
+            <aop:after method="zhengQiangZ" pointcut-ref="peizhi"></aop:after>&lt;!&ndash;最终&ndash;&gt;
+            <aop:after-returning method="zhengQiangH" pointcut-ref="peizhi"></aop:after-returning>&lt;!&ndash;后置&ndash;&gt;
+            <aop:around method="zhengQiangHR" pointcut-ref="peizhi"></aop:around>&lt;!&ndash;环绕&ndash;&gt;
+
+
+
+
+        </aop:aspect>
+
+    </aop:config>-->
+    <!--开启注解扫描-->
+    <context:component-scan base-package="com.itheima.proxy"></context:component-scan>
+    <!--开启Aop的自动代理-->
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+
+
+
+
+
+
+
+
+
+
+</beans>
